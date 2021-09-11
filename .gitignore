@@ -21,8 +21,11 @@ logs/
 project/*-shim.sbt
 project/project/
 project/target/
-target/
 .scala_dependencies
 .worksheet
 sbt.json
 *.zip
+.bsp
+project/
+
+
