@@ -54,4 +54,22 @@ object Main {
       val reversedCoins = coins.sortWith((a,b) => a < b)
       innerCount(money: Int, reversedCoins: List[Int])
     }
+
+  /**
+   * Exercice 4, variant 13
+   */
+
+  def function(x: Double, m: => Int, n: => Int): Double = {
+    @tailrec
+    def power(pow: Int, acc: Double, currPow: Int): Double =
+      if (pow == currPow) acc
+      else power(pow, acc*x, currPow+1)
+
+    val pp = (pow: Int) => power(pow, 1, 0)
+    val p = (pow: Int) => if (pow >= 0) pp(pow) else 1 / pp(-pow)
+
+    if (x == 2) Double.NaN
+    else if (x < 2) 2
+    else p(n) + p(m)
   }
+}
