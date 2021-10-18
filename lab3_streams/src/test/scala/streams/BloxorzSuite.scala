@@ -105,52 +105,6 @@ class BloxorzSuite extends munit.FunSuite {
   }
 
 
-  test("from test") {
-    new Level1 {
-//      val got = newNeighborsOnly(
-//        Set(
-//          (Block(Pos(1,2),Pos(1,3)), Right::Left::Up::Nil),
-//          (Block(Pos(2,1),Pos(3,1)), Down::Left::Up::Nil)
-//        ).to(LazyList),
-//        Set(Block(Pos(1,2),Pos(1,3)), Block(Pos(1,1),Pos(1,1)))
-//      )
-//
-//      val expect = Set(
-//        (Block(Pos(2,1),Pos(3,1)), List(Down, Left, Up))
-//      ).to(LazyList)
-//
-//      assertEquals(got, expect)
-      val g = from(LazyList.cons((Block(Pos(1,2),Pos(1,3)), Nil), LazyList.empty), Set.empty)
-      g.foreach(
-        println(_)
-      )
-    }
-  }
-
   import scala.concurrent.duration._
   override val munitTimeout: FiniteDuration = 10.seconds
 }
-//LazyList(
-//  (Block(Pos(1,2),Pos(1,3)),List(Right, Left, Up)),
-//  (Block(Pos(2,1),Pos(3,1)),List(Down, Left, Up))
-//)
-//
-//LazyList(
-//  (Block(Pos(2,1),Pos(3,1)),List(Down, Left, Up)),
-//  (Block(Pos(1,-1),Pos(1,0)),List(Left, Left, Up)),
-//  (Block(Pos(-1,1),Pos(0,1)),List(Up, Left, Up)),
-//  (Block(Pos(1,2),Pos(1,3)),List(Right, Left, Up))
-//)
-
-
-
-//
-//LazyList(
-//(Block(Pos(1,2),Pos(1,3)),List(Right, Left, Up)),
-//(Block(Pos(2,1),Pos(3,1)),List(Down, Left, Up))
-//)
-//
-//LazyList(
-//(Block(Pos(2,1),Pos(3,1)),List(Down, Left, Up)),
-//(Block(Pos(1,2),Pos(1,3)),List(Right, Left, Up))
-//)

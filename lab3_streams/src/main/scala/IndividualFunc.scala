@@ -26,8 +26,8 @@ object IndividualFunc {
       if (pow == currPow) acc
       else power(acc*x, currPow+1, pow)
 
-    val pp = (power _).curried(1)(0)
-    val p = (pow: Int) => if (pow >= 0) pp(pow) else 1 / pp(-pow)
+    def pp = (power _).curried(1)(0)
+    def p = (pow: Int) => if (pow >= 0) pp(pow) else 1 / pp(-pow)
 
     if (x < 2) 2
     else p(n) + p(m)
