@@ -9,6 +9,7 @@ import scala.annotation.tailrec
 
 abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
 
+
   lazy val genHeap: Gen[H] = oneOf(
     const(empty),
     for {
@@ -27,6 +28,17 @@ abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
   property("min1") = forAll { a: Int =>
     val h = insert(a, empty)
     findMin(h) == a
+  }
+
+  property("meld with empty is the same heap") = forAll { h: H =>
+    @tailrec
+    def isEqualHeaps(h1: H, h2: H): Boolean = {
+      if (isEmpty(h1) && (isEmpty(h1) == isEmpty(h2))) true
+      else if (findMin(h1) != findMin(h2)) false
+      else isEqualHeaps(deleteMin(h1), deleteMin(h2))
+    }
+
+    isEqualHeaps(h, meld(h, empty))
   }
 
   //Якщо ви вставляєте будь-які два елементи в порожню купу, знаходження мінімуму результуючої купи повинно повернути найменший з двох елементів.
@@ -106,19 +118,6 @@ abstract class QuickCheckHeap extends Properties("Heap") with IntHeap {
     check()
     }
   }
-
-  //Якщо поєднати дві черги, потім видалити мінімум першої, вставити в другу, поєднати і перевірити елементи черг, то вони мають бути однакові//Список елементів поєднання черг має не залежати від порядку поєднання
-//  property("merged hips") = forAll{ (h1: H, h2: H) =>
-//
-//    @tailrec
-//    def findElem(h: H): Boolean =
-//      (!isEmpty(h)
-//        && (findMin(h) == a
-//        || findElem(deleteMin(h))))
-//
-//    findElem(
-//      insert(a, h))
-//  }
 
   //Якщо вставити елемент в купу, то вона буде його містити, навіть, якщо він не мінімальний
   property("find elem in heap") = forAll{ (a: A, h: H) =>
