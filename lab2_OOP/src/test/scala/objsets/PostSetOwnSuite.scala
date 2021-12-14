@@ -43,10 +43,13 @@ class PostSetOwnSuite extends munit.FunSuite {
     assertEquals(size(GoogleVsApple.appleposts.filter(p => p.likes == 321)),1)
   }
 
+  //my variant
   //  Для наборів googlePosts та applePosts створіть об’єднання та відфільтрувати публікації, які містять 321 або 205 вподобайок. Тест має перевірити, що кінцевий результат містить 2 елементи
   test("union and filter: googlePosts and applePosts: 2 filtered elems") {
-    assertEquals(size(GoogleVsApple.appleposts.union(GoogleVsApple.googleposts)
-      .filter(p => p.likes == 321 || p.likes == 205)), 2)
+    assertEquals(
+      size(
+        GoogleVsApple.appleposts.union(GoogleVsApple.googleposts)
+          .filter(p => p.likes == 321 || p.likes == 205)), 2)
   }
 
   //  Для наборів googlePosts та applePosts створіть об’єднання та відфільтрувати публікації, які містять 321 або 205 вподобайок. Тест має перевірити правильність виконання методу descendingByLike на отриманому результаті

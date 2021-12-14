@@ -238,6 +238,11 @@ object GoogleVsApple {
   def postKeyWordFilter(l: List[String], p: Post): Boolean =
     l.map(str => p.text.contains(str)).reduce((b1, b2) => b1 || b2)
 
+  def postKeyWordFilter2(l: List[String]): Post => Boolean =
+    p => l.map(str => p.text.contains(str)).reduce((b1, b2) => b1 || b2)
+
+  def googleFilter3 = (postKeyWordFilter _).curried(google)
+
   def googleFilter(post: Post): Boolean = postKeyWordFilter(google, post)
   def appleFilter(post: Post): Boolean = postKeyWordFilter(apple, post)
 
